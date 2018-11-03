@@ -1,8 +1,8 @@
 var http = require('http');
+var dt = require('./modules/datetime');
 
-http.createServer(basehttpserver).listen(8080);
-
-function basehttpserver(req, res) {
+http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Hello World!');
-}
+    res.write("The date and time are currently: " + dt.myDateTime());
+    res.end();
+}).listen(8080);
